@@ -7,39 +7,45 @@
 // @include     /^https://github.com/[^/]+/[^/]+/wiki.*$/
 // @downloadURL https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
 // @updateURL   https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
-// @version     1.0
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
-window.addEventListener('load', function(){
+(function(window,$){
 	'use strict';
-	var icons='https://raw.githubusercontent.com/powerman/asciidoc-cheatsheet/master/images/icons/';
 
-	// Replace text with icons for NOTE/TIP/etc.
-	$('tbody > tr > td:first-child > div')
-		.filter(function(){ return this.innerHTML==='Note'; })
-		.html('<img src="'+icons+'note.png">');
-	$('tbody > tr > td:first-child > div')
-		.filter(function(){ return this.innerHTML==='Tip'; })
-		.html('<img src="'+icons+'tip.png">');
-	$('tbody > tr > td:first-child > div')
-		.filter(function(){ return this.innerHTML==='Important'; })
-		.html('<img src="'+icons+'important.png">');
-	$('tbody > tr > td:first-child > div')
-		.filter(function(){ return this.innerHTML==='Warning'; })
-		.html('<img src="'+icons+'warning.png">');
-	$('tbody > tr > td:first-child > div')
-		.filter(function(){ return this.innerHTML==='Caution'; })
-		.html('<img src="'+icons+'caution.png">');
-	// Remove border around NOTE/TIP/etc.
-	$('tbody:has(> tr > td:first-child > div > img)').find('tr, td').css({'border':'none'});
+	var icons = 'https://raw.githubusercontent.com/powerman/asciidoc-cheatsheet/master/images/icons/';
+	var handler = function(){
 
-	// Make block titles bold
-	$('.markdown-body div > div:first-child + *').prev().filter(':not(:has(*))').css({'font-weight':'bold'});
-	$('.markdown-body td > div:first-child').filter(':not(:has(*))').css({'font-weight':'bold'});
+		// Replace text with icons for NOTE/TIP/etc.
+		$('tbody > tr > td:first-child > div')
+			.filter(function(){ return this.innerHTML==='Note'; })
+			.html('<img src="'+icons+'note.png">');
+		$('tbody > tr > td:first-child > div')
+			.filter(function(){ return this.innerHTML==='Tip'; })
+			.html('<img src="'+icons+'tip.png">');
+		$('tbody > tr > td:first-child > div')
+			.filter(function(){ return this.innerHTML==='Important'; })
+			.html('<img src="'+icons+'important.png">');
+		$('tbody > tr > td:first-child > div')
+			.filter(function(){ return this.innerHTML==='Warning'; })
+			.html('<img src="'+icons+'warning.png">');
+		$('tbody > tr > td:first-child > div')
+			.filter(function(){ return this.innerHTML==='Caution'; })
+			.html('<img src="'+icons+'caution.png">');
+		// Remove border around NOTE/TIP/etc.
+		$('tbody:has(> tr > td:first-child > div > img)').find('tr, td').css({'border':'none'});
 
-	// Fix TOC
-	$('#user-content-toc ul ul li:has(ul)').addClass('toc-node');
-	$('head').append('<style>#user-content-toc ul ul li.toc-node:before { content:\'\' }</style>');
+		// Make block titles bold
+		$('.markdown-body div > div:first-child + *').prev().filter(':not(:has(*))').css({'font-weight':'bold'});
+		$('.markdown-body td > div:first-child').filter(':not(:has(*))').css({'font-weight':'bold'});
 
-}, false);
+		// Fix TOC
+		$('#user-content-toc ul ul li:has(ul)').addClass('toc-node');
+		$('head').append('<style>#user-content-toc ul ul li.toc-node:before { content:\'\' }</style>');
+	};
+
+	window.addEventListener('load', handler, false);
+	window.$(document).on('pjax:end', handler);
+
+})(window,$);
