@@ -5,9 +5,10 @@
 // @include     /^https://github.com/[^/]+/[^/]+$/
 // @include     /^https://github.com/[^/]+/[^/]+/blob/.*\.(asciidoc|adoc|asc)$/
 // @include     /^https://github.com/[^/]+/[^/]+/wiki.*$/
+// @include     /^https://gist.github.com/[^/]+/.*$/
 // @downloadURL https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
 // @updateURL   https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
 
@@ -16,6 +17,13 @@
 
 	var icons = 'https://raw.githubusercontent.com/powerman/asciidoc-cheatsheet/master/images/icons/';
 	var handler = function(){
+
+		if(window.location.host==='gist.github.com'){
+			var filename = $('strong.file-name').html();
+			if(filename===undefined || !filename.match('\\.(asciidoc|adoc|asc)$')){
+				return;
+			}
+		}
 
 		// Replace text with icons for NOTE/TIP/etc.
 		$('tbody > tr > td:first-child > div')
