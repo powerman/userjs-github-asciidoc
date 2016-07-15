@@ -8,7 +8,7 @@
 // @include     /^https://gist.github.com/[^/]+/.*$/
 // @downloadURL https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
 // @updateURL   https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
-// @version     1.3
+// @version     1.4
 // @grant       none
 // @require     //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // ==/UserScript==
