@@ -42,8 +42,9 @@
 		$('tbody > tr > td:first-child > div')
 			.filter(function(){ return this.innerHTML==='Caution'; })
 			.html('<img src="'+icons+'caution.png">');
-		// Remove border around NOTE/TIP/etc.
+		// Remove border around NOTE/TIP/etc and fix it width.
 		$('tbody:has(> tr > td:first-child > div > img)').find('tr, td').css({'border':'none'});
+		$('tbody > tr > td:first-child > div > img').css({'max-width':'none'});
 
 		// Make block titles bold
 		$('.markdown-body div > div:first-child + *').prev().filter(':not(:has(*))').css({'font-weight':'bold'});
