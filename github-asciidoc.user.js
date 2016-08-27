@@ -8,7 +8,7 @@
 // @include     /^https://gist.github.com/[^/]+/.*$/
 // @downloadURL https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
 // @updateURL   https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
-// @version     1.4
+// @version     1.5
 // @grant       none
 // @require     //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // ==/UserScript==
@@ -49,10 +49,6 @@
 		// Make block titles bold
 		$('.markdown-body div > div:first-child + *').prev().filter(':not(:has(*))').css({'font-weight':'bold'});
 		$('.markdown-body td > div:first-child').filter(':not(:has(*))').css({'font-weight':'bold'});
-
-		// Fix TOC
-		$('#user-content-toc ul ul li:has(ul)').addClass('toc-node');
-		$('head').append('<style>#user-content-toc ul ul li.toc-node:before { content:\'\' }</style>');
 	};
 
 	window.addEventListener('load', handler, false);
