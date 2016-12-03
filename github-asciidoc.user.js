@@ -2,13 +2,13 @@
 // @name        GitHub: fix Asciidoc rendering
 // @namespace   https://github.com/powerman/userjs-github-asciidoc
 // @description Fix Asciidoc rendering on GitHub: add standard Asciidoc icons to NOTE/TIP/etc., highlight block titles, fix TOC.
-// @include     /^https://github.com/[^/]+/[^/]+$/
-// @include     /^https://github.com/[^/]+/[^/]+/blob/.*\.(asciidoc|adoc|asc)$/
+// @include     /^https://github.com/[^/]+/[^/]+([#?].*)?$/
+// @include     /^https://github.com/[^/]+/[^/]+/blob/.*\.(asciidoc|adoc|asc)([#?].*)?$/
 // @include     /^https://github.com/[^/]+/[^/]+/wiki.*$/
 // @include     /^https://gist.github.com/[^/]+/.*$/
 // @downloadURL https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
 // @updateURL   https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
-// @version     1.5
+// @version     1.6
 // @grant       none
 // @require     //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // ==/UserScript==
