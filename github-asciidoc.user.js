@@ -8,9 +8,9 @@
 // @include     /^https://gist.github.com/[^/]+/.*$/
 // @downloadURL https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
 // @updateURL   https://github.com/powerman/userjs-github-asciidoc/raw/master/github-asciidoc.user.js
-// @version     1.6
+// @version     1.7
 // @grant       none
-// @require     //ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // ==/UserScript==
 
 (function(window,$){
@@ -52,6 +52,6 @@
 	};
 
 	window.addEventListener('load', handler, false);
-	window.$(document).on('pjax:end', handler);
+	$(document).on('pjax:end', handler);
 
 })(window,$);
